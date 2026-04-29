@@ -10,6 +10,7 @@ import { defaultGrid } from '../../utils/gridConstants';
 import { useLocalStorage } from '../../hooks/UseLocalStorage';
 import { LoadingCard } from '../../components/loading/LoadingCard';
 import { TradingOffers } from './TradingOffers';
+import { TradingPartners } from './TradingPartners';
 import { TradingOrderForm } from './TradingOrderForm';
 import { TradingPeerInfo } from './TradingPeerInfo';
 import { TradingHistory } from './TradingHistory';
@@ -37,11 +38,17 @@ type TradingWidget = {
 
 const widgets: TradingWidget[] = [
   {
+    id: 'partners',
+    title: 'Trading Partners',
+    component: TradingPartners,
+    default: { x: 0, y: 0, w: 5, h: 9, minW: 4, minH: 4 },
+  },
+  {
     id: 'offers',
     title: 'Offers',
     headerRight: <TradingAssetSelector />,
     component: TradingOffers,
-    default: { x: 0, y: 0, w: 16, h: 9, minW: 8, minH: 8 },
+    default: { x: 5, y: 0, w: 11, h: 9, minW: 6, minH: 6 },
   },
   {
     id: 'order-form',

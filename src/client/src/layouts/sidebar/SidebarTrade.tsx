@@ -160,7 +160,7 @@ export const SidebarTrade: FC<{ embedded?: boolean }> = ({
   // Whether we have a magma offer (for channel setup) vs a direct trading partner
   const isMagmaOffer = !!selectedOffer?.magmaOfferId;
 
-  // Offer readiness query — only for Magma offers
+  // Offer readiness query
   const {
     data: readinessData,
     loading: readinessLoading,
@@ -173,7 +173,7 @@ export const SidebarTrade: FC<{ embedded?: boolean }> = ({
         tapd_group_key: offerAsset?.groupKey || undefined,
       },
     },
-    skip: !selectedOffer?.node.pubkey || !isMagmaOffer,
+    skip: !selectedOffer?.node.pubkey,
     fetchPolicy: 'cache-and-network',
   });
 
@@ -386,8 +386,8 @@ export const SidebarTrade: FC<{ embedded?: boolean }> = ({
             )}
           </div>
 
-          {/* Channel readiness (Magma offers only) */}
-          {isMagmaOffer && (
+          {/* Channel readiness (only when channels aren't both open) */}
+          {!channelsReady && (
             <div className="flex flex-col gap-1.5 rounded-md border border-border/60 bg-muted/20 px-3 py-2.5 text-xs">
               <span className="text-[10px] font-medium text-muted-foreground/70 uppercase tracking-wider">
                 Channels
