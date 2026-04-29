@@ -41,7 +41,7 @@ type TradingAction =
 
 const initialState: TradingState = {
   selectedAsset: null,
-  txType: TapTransactionType.Sale,
+  txType: TapTransactionType.Purchase,
   selectedOffer: null,
 };
 
