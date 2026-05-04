@@ -33,7 +33,8 @@ export const drizzleProvider: FactoryProvider = {
 
     if (!dbType) return null;
 
-    const migrationsRoot = join(process.cwd(), 'drizzle');
+    const migrationsRoot =
+      process.env.DB_MIGRATIONS_PATH || join(process.cwd(), 'drizzle');
 
     if (dbType === 'postgres') {
       const url = config.get<string>('database.url');

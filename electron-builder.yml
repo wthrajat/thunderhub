@@ -1,0 +1,54 @@
+appId: io.thunderhub.desktop
+productName: ThunderHub
+
+directories:
+  output: release
+  buildResources: electron/build-resources
+
+files:
+  - dist/**/*
+  - src/client/dist/**/*
+  - drizzle/**/*
+  - electron/dist/**/*
+  - package.json
+  - '!**/{.DS_Store,.git,.gitignore,.editorconfig,.eslintrc*,.prettierrc*,.husky}'
+  - '!**/{*.md,LICENSE,CHANGELOG*}'
+  - '!**/__generated__/**/*'
+  - '!**/*.spec.{ts,js}'
+
+asar: true
+asarUnpack:
+  - node_modules/better-sqlite3/**/*
+  - node_modules/bindings/**/*
+  - node_modules/file-uri-to-path/**/*
+
+mac:
+  target:
+    - target: dmg
+      arch:
+        - arm64
+        - x64
+    - target: zip
+      arch:
+        - arm64
+        - x64
+  category: public.app-category.utilities
+  hardenedRuntime: false
+  gatekeeperAssess: false
+  identity: null
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+
+linux:
+  target:
+    - target: AppImage
+      arch:
+        - x64
+    - target: deb
+      arch:
+        - x64
+  category: Network

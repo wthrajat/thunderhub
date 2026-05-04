@@ -64,9 +64,22 @@ module.exports = defineConfig([{
             ...globals.jest,
         },
     },
+}, {
+    files: ["electron/**/*.ts"],
+
+    languageOptions: {
+        parserOptions: {
+            project: "electron/tsconfig.json",
+        },
+
+        globals: {
+            ...globals.node,
+        },
+    },
 }, globalIgnores([
     "**/node_modules",
     "**/dist",
     "**/*.generated.tsx",
     "drizzle.config.ts",
+    "eslint.config.js",
 ])]);

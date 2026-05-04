@@ -126,7 +126,9 @@ export type JwtObjectType = {
       inject: [ConfigService],
       useFactory: (config: ConfigService) => [
         {
-          rootPath: join(process.cwd(), 'src', 'client', 'dist'),
+          rootPath:
+            process.env.STATIC_ROOT_PATH ||
+            join(process.cwd(), 'src', 'client', 'dist'),
           serveRoot: config.get('basePath'),
           exclude: [
             `${config.get('basePath') || ''}/graphql{*path}`,

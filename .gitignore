@@ -3,6 +3,8 @@
 /node_modules
 src/client/dist
 src/client/.next/
+/electron/dist
+/release
 
 # Logs
 logs
